@@ -10,6 +10,8 @@ const props = defineProps<{
     candidates: Candidate[];
 }>();
 
+console.log("props.candidates", props.candidates);
+
 const form = ref({
     team_id: '',
     candidate_id: '',
@@ -31,7 +33,7 @@ const authenticate = () => {
 
 const filteredCandidates = computed(() => {
     if (!form.value.team_id) return [];
-    return props.candidates.filter(candidate => candidate.team_id === Number(form.value.team_id));
+    return props.candidates.filter(candidate => candidate.team_id == Number(form.value.team_id));
 });
 const submitForm = async () => {
     isSubmitting.value = true;
